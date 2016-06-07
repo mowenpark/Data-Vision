@@ -50,5 +50,11 @@ angular.module('visOne', ['ui.router', 'templates', 'Devise'])
       }
     })
 
+    .state('donut', {
+      url: '/donut',
+      templateUrl: 'vis/_donut.html',
+      controller: 'DonutChartController'
+    })
+
   $urlRouterProvider.otherwise('home');
 }]);

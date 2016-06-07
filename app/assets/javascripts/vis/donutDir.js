@@ -3,17 +3,20 @@ angular.module('visOne')
 
     return {
       link: link,
-      restrict: 'E'
+      restrict: 'E',
+      scope: {data: "="}
     }
 
     function link(scope, element) {
-    // the D3 bits..
-    var data =[82, 62, 10, 32];
+
+    var data = scope.data;
+
+    var color = d3.scale.category20c();
+
     // and `element[0]` for the the directives containing DOM element
-    var color = d3.scale.category10();
     var el = element[0];
     var width = el.clientWidth;
-    var height = el.clientWidth;
+    var height = el.clientHeight;
     var min = Math.min(width, height);
     var pie = d3.layout.pie().sort(null);
     var arc = d3.svg.arc()
@@ -31,5 +34,11 @@ angular.module('visOne')
         .attr('d', arc)
         .attr('fill', function(d, i){ return color(i) });
     }
+
+    scope.$watch(function () {
+      return el.clientWidth * el.clientHeight
+    }, function () {
+      
+    })
 
 });
