@@ -23,7 +23,7 @@ angular.module('visOne')
 
     o.create = function(post) {
       return $http.post('/api/posts', post).success(function(data){
-        o.posts.push(data);
+        o.posts.push(data.post);
       });
     };
 
