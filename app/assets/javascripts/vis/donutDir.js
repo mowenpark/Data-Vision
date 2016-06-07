@@ -27,13 +27,14 @@ angular.module('visOne')
         g.attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')')
       })
 
-    setInterval(function () {
+    var intervalHandle = setInterval(function () {
       scope.$apply(function(){
         scope.data = d3.range(Math.round(Math.random() * 10 + 1)).map(Math.random)
       })
     }, 3000);
 
     svg.on('mousedown', function(){
+      clearInterval(intervalHandle)
       scope.$apply(function(){
         scope.data = d3.range(Math.round(Math.random() * 10 + 1)).map(Math.random)
       })

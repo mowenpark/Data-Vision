@@ -1,5 +1,6 @@
 <div class="page-header">
   <h1>Data Vision</h1>
+  <h3><small>Share your favorite data visualization!</small></h3>
 </div>
 
 <div ng-repeat="post in posts | orderBy:'-upvotes'">
@@ -16,7 +17,7 @@
     posted by <a ng-href="#/users/{{post.user.username}}">{{post.user.username}}</a>
   </span>
   <span>
-    <a href="#/posts/{{post.id}}">Comments</a>
+    <a href="#/posts/{{post.id}}">Comments ({{post.comments.length}})</a>
   </span>
 </div>
 
@@ -38,3 +39,8 @@
   </div>
   <button type="submit" class="btn btn-primary">Post</button>
 </form>
+
+<blockquote style="margin-top:30px;">
+  <p><em>The commonality between science and art is in trying to see profoundly - to develop strategies of seeing and showing.</em></p>
+  <footer>Edward Tufte</footer>
+</blockquote>

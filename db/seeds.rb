@@ -6,4 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Post.create({title: "donuts!", link: "#/donut"})
+guest = User.create({email: "michael@email.com", username: "Michael", password: "password"})
+
+donuts = Post.create({title: "donuts!", link: "#/donut", user_id: guest.id, upvotes: 5})
+
+comments = donuts.comments.create([{user_id: guest.id, body: 'Cool post!', upvotes: 3},
+    {user_id: guest.id, body: 'Great idea but everything is wrong!', upvotes: 1}])
