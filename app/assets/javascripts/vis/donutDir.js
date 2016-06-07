@@ -1,12 +1,12 @@
 angular.module('visOne')
   .directive('donutChart', function () {
 
-    function link(scope, el) {
+    function link($scope, $el) {
 
-      var el = el[0]
+      var el = $el[0]
       var width = el.clientWidth
       var height = el.clientHeight
-      var data = scope.data
+      var data = $scope.data
       var color = d3.scale.category20c()
       var min = Math.min(width, height)
       var pie = d3.layout.pie().sort(null)
@@ -16,7 +16,7 @@ angular.module('visOne')
       // add the <path>s for each arc slice
       var arcs = g.selectAll('path')
 
-      scope.$watch(function(){
+      $scope.$watch(function(){
         return el.clientWidth * el.clientHeight
       }, function(){
         width = el.clientWidth; height = el.clientHeight
@@ -28,15 +28,15 @@ angular.module('visOne')
       })
 
     var intervalHandle = setInterval(function () {
-      scope.$apply(function(){
-        scope.data = d3.range(Math.round(Math.random() * 10 + 1)).map(Math.random)
+      $scope.$apply(function(){
+        $scope.data = d3.range(Math.round(Math.random() * 10 + 1)).map(Math.random)
       })
     }, 3000);
 
     svg.on('mousedown', function(){
       clearInterval(intervalHandle)
-      scope.$apply(function(){
-        scope.data = d3.range(Math.round(Math.random() * 10 + 1)).map(Math.random)
+      $scope.$apply(function(){
+        $scope.data = d3.range(Math.round(Math.random() * 10 + 1)).map(Math.random)
       })
     })
 
@@ -49,7 +49,7 @@ angular.module('visOne')
       };
     }
 
-    scope.$watch('data', function(data){
+    $scope.$watch('data', function(data){
       var duration = 1000
       arcs = arcs.data(pie(data))
       arcs.transition()
