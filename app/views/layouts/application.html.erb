@@ -10,15 +10,14 @@
 </head>
 
 <body ng-app="visOne">
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3">
+  <div ng-include="'nav/_nav.html'"></div>
 
-      <div ng-include="'nav/_nav.html'"></div>
+
+    <div class="col-md-6 col-md-offset-3">
 
       <ui-view></ui-view>
 
     </div>
-  </div>
 
 </body>
 

@@ -7,6 +7,7 @@ json.post do
     json.id comment.id
     json.post_id comment.post_id
     json.user comment.user
+    json.upvotes comment.upvotes
   end
   json.user @post.user
 end
