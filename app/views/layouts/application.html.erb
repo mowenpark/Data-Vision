@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Data Vision</title>
+
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+
+</head>
+
+<body ng-app="visOne">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+
+      <div ng-include="'nav/_nav.html'"></div>
+
+      <ui-view></ui-view>
+      <donut-chart></donut-chart>
+
+    </div>
+  </div>
+
+</body>
+
+</html>
