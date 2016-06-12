@@ -1,7 +1,11 @@
+<div class="containing">
+
+<h2 style="margin-top:50px; margin-left:30px">SFPD Incidents</h2>
+<p style="margin-left:30px;">Incidents derived from SFPD Crime Incident Reporting system, showing data from 1/1/2003 until 7/19/2015.</p>
 <div class="row">
   <div class="app-view col-md-2">
     <form ng-submit="filterResults(this)"
-      style="margin-top:50px; margin-left:30px;">
+      style="margin-left:30px;">
       <h3>Filter Results</h3>
 
       <fieldset class="form-group">
@@ -29,8 +33,7 @@
   </div>
 
   <div class="app-view col-md-10">
-    <div class="containing">
-      <heatmap-chart data="data"></heatmap-chart>
-    </div>
+    <heatmap-chart data="data"></heatmap-chart>
   </div>
+</div>
 </div>
