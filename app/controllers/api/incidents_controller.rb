@@ -1,7 +1,8 @@
 class Api::IncidentsController < ApplicationController
 
   def index
-    @incidents = Incident.where(category: "TRESPASS")
+    category = params["user_selection"] || "TRESPASS"
+    @incidents = Incident.where(category: category)
   end
 
   def show
