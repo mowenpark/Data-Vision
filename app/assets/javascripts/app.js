@@ -56,5 +56,16 @@ angular.module('visOne', ['ui.router', 'templates', 'Devise'])
       controller: 'DonutChartController'
     })
 
+    .state('heatmap', {
+      url: '/heatmap',
+      templateUrl: 'vis2/_heatmap.html',
+      controller: 'HeatMapController',
+      resolve: {
+        incident: ['$stateParams', 'incidents', function($stateParams, incidents) {
+          return incidents.getAll();
+        }]
+      }
+    })
+
   $urlRouterProvider.otherwise('home');
 }]);

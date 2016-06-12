@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: {format: :json} do
 
+    resources :incidents, only: [:index, :show]
+
     resources :posts, only: [:create, :index, :show] do
       resources :comments, only: [:show, :create] do
         member do

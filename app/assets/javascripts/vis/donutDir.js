@@ -18,13 +18,13 @@ angular.module('visOne')
 
         scope.$watch(function(){
           return el.clientWidth * el.clientHeight
-        }, function(){
-          width = el.clientWidth; height = el.clientHeight
-          g.attr({width: width, height: height})
-          min = Math.min(width, height)
-          arc.outerRadius(min / 2 * 0.9).innerRadius(min / 2 * 0.5)
-          arcs.attr('d', arc)
-          g.attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')')
+            }, function(){
+              width = el.clientWidth; height = el.clientHeight
+              g.attr({width: width, height: height})
+              min = Math.min(width, height)
+              arc.outerRadius(min / 2 * 0.9).innerRadius(min / 2 * 0.5)
+              arcs.attr('d', arc)
+              g.attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')')
         })
 
       var intervalHandle = setInterval(function () {

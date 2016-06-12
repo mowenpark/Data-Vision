@@ -24,6 +24,8 @@ gem 'bower'
 
 gem 'rails_12factor', group: :production
 
+# gem 'fastercsv', '~> 1.5', '>= 1.5.5'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
