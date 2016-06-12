@@ -1,3 +1,26 @@
-<div class="containing">
-  <heatmap-chart data="incidents" ng-style="{width: 300}"></heatmap-chart>
+<div class="row">
+  <div class="app-view col-md-2">
+    <form ng-submit="filterResults(this)"
+      style="margin-top:40px; margin-left:30px;">
+      <h3>Filter Results</h3>
+
+      <fieldset class="form-group">
+        <label>Select Incident Type:</label>
+        <select ng-model="myVar" class="form-control">
+          <option value="VANDALISM">VANDALISM</option>
+          <option value="TRESPASS">TRESPASS</option>
+          <option value="GAMBLING">GAMBLING</option>
+          <option value="LOITERING">LOITERING</option>
+          <option value="DRIVING UNDER THE INFLUENCE">DRIVING UNDER THE INFLUENCE</option>
+        </select>
+      </fieldset>
+      <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+  </div>
+
+  <div class="app-view col-md-10">
+    <div class="containing">
+      <heatmap-chart data="incidents"></heatmap-chart>
+    </div>
+  </div>
 </div>

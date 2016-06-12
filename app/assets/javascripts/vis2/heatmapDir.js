@@ -48,7 +48,7 @@ angular.module('visOne')
               .range(colors);
 
           var cards = svg.selectAll(".hour")
-              .data(data, function(d) {return d.id;});
+              .data(data);
 
           cards.enter().append("rect")
               .attr("x", function(d) { return (d.hour) * gridSize; })

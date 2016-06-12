@@ -1,18 +1,21 @@
-hsh = Hash.new { |hash, key| hash[key] = {} }
+arr = []
 7.times do |i|
-  hsh[i] = Hash.new { |hash, key| hash[key] = 0 }
   24.times do |j|
-    hsh[i][j] = 0
+    h = Hash.new { |hash, key| hash[key] }
+    h[:day] = i
+    h[:hour] = j
+    h[:value] = 0
+    arr << h
   end
 end
 
+@incidents.each do |incident|
+  date_time = arr.select{|ele| ele[:day] == incident.date_time.wday && ele[:hour] == incident.date_time.hour}
+  date_time[0][:value] += 1
+end
 
-json.array! @incidents.each do |incident|
-  json.id incident.id
-  json.category incident.category
-  json.description incident.description
-  json.day incident.date_time.wday
-  json.hour incident.date_time.hour
-  json.location incident.location
-  json.value rand(0..50)
+json.array! arr.each do |incident_count|
+  json.day incident_count[:day]
+  json.hour incident_count[:hour]
+  json.value incident_count[:value]
 end

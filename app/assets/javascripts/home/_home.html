@@ -1,46 +1,48 @@
-<div class="page-header">
-  <h1>Data Vision</h1>
-  <h3><small>Share your favorite data visualization!</small></h3>
-</div>
+<div class="app-view col-md-6 col-md-offset-3">
+  <div class="page-header">
+    <h1>Data Vision</h1>
+    <h3><small>Share your favorite data visualization!</small></h3>
+  </div>
 
-<div ng-repeat="post in posts | orderBy:'-upvotes'">
-  <span class="glyphicon glyphicon-thumbs-up"
-    ng-click="incrementUpvotes(post)"></span>
-  {{post.upvotes}}
-  <span style="font-size:20px; margin-left:10px;">
-    <a ng-show="post.link" href="{{post.link}}">
-      {{post.title}}
-    </a>
-    <span ng-hide="post.link">
-      {{post.title}}
+  <div ng-repeat="post in posts | orderBy:'-upvotes'">
+    <span class="glyphicon glyphicon-thumbs-up"
+      ng-click="incrementUpvotes(post)"></span>
+    {{post.upvotes}}
+    <span style="font-size:20px; margin-left:10px;">
+      <a ng-show="post.link" href="{{post.link}}">
+        {{post.title}}
+      </a>
+      <span ng-hide="post.link">
+        {{post.title}}
+      </span>
+      posted by <a ng-href="#/users/{{post.user.username}}">{{post.user.username}}</a>
     </span>
-    posted by <a ng-href="#/users/{{post.user.username}}">{{post.user.username}}</a>
-  </span>
-  <span>
-    <a href="#/posts/{{post.id}}">Comments ({{post.comments.length}})</a>
-  </span>
-</div>
+    <span>
+      <a href="#/posts/{{post.id}}">Comments ({{post.comments.length}})</a>
+    </span>
+  </div>
 
-<form ng-submit="addPost()"
-  style="margin-top:30px;">
-  <h3>Add a new post</h3>
+  <form ng-submit="addPost()"
+    style="margin-top:30px;">
+    <h3>Add a new post</h3>
 
-  <div class="form-group">
-    <input type="text"
+    <div class="form-group">
+      <input type="text"
+        class="form-control"
+        placeholder="Title"
+        ng-model="title"></input>
+    </div>
+    <div class="form-group">
+      <input type="text"
       class="form-control"
-      placeholder="Title"
-      ng-model="title"></input>
-  </div>
-  <div class="form-group">
-    <input type="text"
-    class="form-control"
-    placeholder="Link"
-    ng-model="link"></input>
-  </div>
-  <button type="submit" class="btn btn-primary">Post</button>
-</form>
+      placeholder="Link"
+      ng-model="link"></input>
+    </div>
+    <button type="submit" class="btn btn-primary">Post</button>
+  </form>
 
-<blockquote style="margin-top:30px;">
-  <p><em>The commonality between science and art is in trying to see profoundly - to develop strategies of seeing and showing.</em></p>
-  <footer>Edward Tufte</footer>
-</blockquote>
+  <blockquote style="margin-top:30px;">
+    <p><em>The commonality between science and art is in trying to see profoundly - to develop strategies of seeing and showing.</em></p>
+    <footer>Edward Tufte</footer>
+  </blockquote>
+</div>
