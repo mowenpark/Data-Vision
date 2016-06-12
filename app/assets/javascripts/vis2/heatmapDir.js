@@ -14,7 +14,7 @@ angular.module('visOne')
           legendElementWidth = gridSize*2,
           buckets = 9,
           colors = ["#ffffd9","#edf8b1","#c7e9b4","#7fcdbb","#41b6c4","#1d91c0","#225ea8","#253494","#081d58"],
-          days = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
+          days = ["Su","Mo", "Tu", "We", "Th", "Fr", "Sa"],
           times = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"];
 
       var svg = d3.select(el).append('svg')
@@ -43,6 +43,8 @@ angular.module('visOne')
 
       scope.$watch('data', function(data) {
 
+          svg.selectAll("text.mono").attr( "fill-opacity", 0 ).transition().duration(2000).delay(0)
+
           var colorScale = d3.scale.quantile()
               .domain([0, buckets - 1, d3.max(data, function (d) { return d.value; })])
               .range(colors);
@@ -61,7 +63,7 @@ angular.module('visOne')
               .attr("height", gridSize)
               .style("fill", colors[0]);
 
-          cards.transition().duration(1000)
+          cards.transition().duration(2000)
               .style("fill", function(d) { return colorScale(d.value); });
 
           cards.exit().remove();
@@ -80,6 +82,8 @@ angular.module('visOne')
             .style("fill", function(d, i) { return colors[i]; });
 
           legend.append("text")
+            .attr( "fill-opacity", 0 ).transition().duration(2000).delay(0)
+            .attr( "fill-opacity", 1 )
             .attr("class", "mono")
             .text(function(d) { return "≥ " + Math.round(d); })
             .attr("x", function(d, i) { return legendElementWidth * i; })

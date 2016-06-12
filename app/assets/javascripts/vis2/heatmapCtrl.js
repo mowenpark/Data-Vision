@@ -10,7 +10,9 @@ angular.module('visOne')
       $scope.incidents = incidents
 
       $scope.filterResults = function (scope) {
-        scope.incidents.filterResults(scope.myVar)
+        scope.incidents.filterResults(scope.myVar).success(function(data){
+          $scope.data = data;
+        });
       }
 
   }])

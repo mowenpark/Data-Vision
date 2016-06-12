@@ -10,8 +10,8 @@ arr = []
 end
 
 @incidents.each do |incident|
-  date_time = arr.select{|ele| ele[:day] == incident.date_time.wday && ele[:hour] == incident.date_time.hour}
-  date_time[0][:value] += 1
+  count = arr.select{|ele| ele[:day] == incident.date_time.wday && ele[:hour] == incident.date_time.hour}
+  count[0][:value] += 1
 end
 
 json.array! arr.each do |incident_count|

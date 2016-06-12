@@ -18,10 +18,7 @@ angular.module('visOne')
     o.filterResults = function (user_selection) {
       return $http.get('/api/incidents', {
         params: {user_selection: user_selection}
-      }).success(function(data){
-        debugger
-        angular.copy(data, o.incidents);
-      });
+      })
     };
 
     // o.get = function(id) {
