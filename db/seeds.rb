@@ -18,6 +18,8 @@ comments = donuts.comments.create([{user_id: guest.id, body: 'Cool post!', upvot
 
 police_csv = 'app/assets/SFPD_Incidents.csv'
 
+ipo_csv = 'app/assets/ipos_data.csv'
+
 CSV.foreach(police_csv, headers: true) do |row|
   category = row["Category"]
   description = row["Descript"]

@@ -1,8 +1,8 @@
 class Api::IncidentsController < ApplicationController
 
   def index
-    category = params["user_selection"] || "TRESPASS"
-    @incidents = Incident.where(category: category).limit(2000)
+    category = params["user_selection"] || "VANDALISM"
+    @incidents = Incident.where(category: category)
   end
 
   def show
