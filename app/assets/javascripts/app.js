@@ -67,5 +67,16 @@ angular.module('visOne', ['ui.router', 'templates', 'Devise'])
       }
     })
 
+    .state('ipo_vis', {
+      url: '/ipo_vis',
+      templateUrl: 'ipo_vis/_barLine.html',
+      controller: 'BarLineController',
+      resolve: {
+        ipo: ['$stateParams', 'ipos', function($stateParams, ipos) {
+          return ipos.getAll();
+        }]
+      }
+    })
+
   $urlRouterProvider.otherwise('home');
 }]);
