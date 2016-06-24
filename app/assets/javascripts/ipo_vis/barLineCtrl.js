@@ -3,8 +3,11 @@ angular.module('visOne')
   .controller('BarLineController', [
     '$scope',
     '$window',
-    function($scope, $window) {
+    'ipos'
+    function($scope, $window, ipos) {
 
-      $scope.data = {}
+      debugger
+
+      $scope.data = ipos
 
   }])

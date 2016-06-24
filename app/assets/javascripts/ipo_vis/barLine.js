@@ -10,6 +10,7 @@ angular.module('visOne')
     };
 
     o.getAll = function() {
+      debugger
       return $http.get('/api/ipos').success(function(data){
         debugger
         angular.copy(data, o.ipos);
