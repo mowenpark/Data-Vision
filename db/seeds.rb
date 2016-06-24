@@ -36,3 +36,6 @@ CSV.foreach(police_csv, headers: true) do |row|
     location: location
   })
 end
+
+CSV.foreach(ipo_csv, headers: true) do |row|
+end
