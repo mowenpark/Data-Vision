@@ -1,5 +1,5 @@
 angular.module('visOne')
-  .directive('barLineChart', function () {
+  .directive('barlineChart', function () {
 
     function link(scope, el) {
 
@@ -24,12 +24,12 @@ angular.module('visOne')
       }
       var scatterWidth = scatterHeight = chartWidth - lineWidth - visPadding.left - visPadding.right;
 
-      getColor = function(d) {
+      function getColor(d) {
            if(d.key) return axes.chartColors(d.key);
            else return axes.chartColors(d);
        }
 
-      window.buildChart = function(data) {
+      function buildChart(data) {
           axes = new Axes(data);
 
           container = d3.select(el).selectAll('g.container').data(data);

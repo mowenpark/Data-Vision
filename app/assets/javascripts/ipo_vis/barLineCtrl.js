@@ -6,8 +6,6 @@ angular.module('visOne')
     'ipos',
     function($scope, $window, ipos) {
 
-      debugger
-
-      $scope.data = ipos
+      $scope.data = ipos.ipos
 
   }])

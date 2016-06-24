@@ -38,4 +38,16 @@ CSV.foreach(police_csv, headers: true) do |row|
 end
 
 CSV.foreach(ipo_csv, headers: true) do |row|
+  year = row["year"]
+  biotech_ipos = row["biotech_ipos"]
+  biotech_percent = row["biotech_percent"]
+  other_ipos = row["other_ipos"]
+  other_percent = row["other_percent"]
+  new_ipo = Ipo.create({
+    year: year,
+    biotech_ipos: biotech_ipos,
+    biotech_percent: biotech_percent,
+    other_ipos: other_ipos,
+    other_percent: other_percent
+  })
 end
