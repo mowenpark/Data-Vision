@@ -8,13 +8,17 @@ angular.module('visOne')
       var el = el[0];
 
       var dispatch = d3.dispatch('hideTooltip', 'iTooltip');
+
       var container;
       var axes;
+
       var lineHeight = 100,
           lineWidth = 600;
+
       var chartPadding = 30,
           chartHeight = 490,
           chartWidth = 907;
+
       var visPadding = {
           top: 10,
           right: 20,
@@ -22,7 +26,6 @@ angular.module('visOne')
           left: 70,
           middle: 50
       }
-      var scatterWidth = scatterHeight = chartWidth - lineWidth - visPadding.left - visPadding.right;
 
       function getColor(d) {
            if(d.key) return axes.chartColors(d.key);
