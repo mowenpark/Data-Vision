@@ -82,9 +82,14 @@ angular.module('visOne')
       hfuY.domain([-hfuBound, 0, hfuBound])
       hfuY.range([lineHeight/2, lineHeight/2, 0]);
 
+      var charts = d3.scale.ordinal();
+      charts
+        .domain(['corr','disp','corrDisp', 'hfri', 'hfu', 'fof'])
+        .range([3*(lineHeight + chartPadding), 3*(lineHeight + chartPadding) + 13, 3*(lineHeight + chartPadding), 2*(lineHeight + chartPadding), (lineHeight + chartPadding), 0]);
+
       function getColor(d) {
-           if(d.key) return axes.chartColors(d.key);
-           else return axes.chartColors(d);
+           if(d.key) return chartColors(d.key);
+           else return chartColors(d);
        }
 
       function buildSkeleton(data) {
@@ -95,14 +100,16 @@ angular.module('visOne')
 
           d3.select('g.container').append('g')
             .attr('class', 'x-axis')
+            .attr('transform', 'translate(0,' + (charts('corrDisp') + lineY(0)) + ')')
             .call(xAxis);
       }
 
       function buildDisCorr(data) {
 
-        var dcWrap = d3.select('g.container').selectAll('g.d-c-wrap')
+        var dcWrap = d3.select('g.container').data([data])
             .append('g')
-            .attr('class', 'd-c-wrap');
+            .attr('class', 'd-c-wrap')
+            .attr('transform', 'translate(0,' + charts('corrDisp') + ')');
 
         var dcText = dcWrap.append('text')
             .attr('transform', 'translate(-11,' + lineHeight/2 + ')')
@@ -116,7 +123,8 @@ angular.module('visOne')
             .attr('x', '0')
             .attr('y', '1.4em');
 
-        var keys = ['corr','disp'];
+        var keys = ['biotech_ipos','other_ipos'];
+
         var linesWrap = dcWrap.selectAll('g').data(function(d) {
             var a = keys.map(function(k) {
                 return {
@@ -126,6 +134,7 @@ angular.module('visOne')
             })
             return a;
         });
+
         linesWrap.enter().append('g').attr('class', 'lines-wrap');
 
         var line = d3.svg.line()
@@ -145,26 +154,12 @@ angular.module('visOne')
               .attr('stroke', function(d,i,j) { return getColor(keys[j]) })
               .attr('stroke-width', 2)
               .attr('fill', 'none');
-
-          dcWrap.append('g')
-              .attr('class', 'z-line');
-
-          var zLine = dcWrap.select('.z-line');
-
-          zLine.append('text')
-              .text(0)
-              .attr('x', lineWidth - visPadding.middle)
-              .attr('y', lineY(0))
-              .attr('dy', '0.33em')
-              .attr('dx', '1em')
-              .attr('text-anchor', 'end');
-
-          return dcWrap;
       }
 
       scope.$watch('data', function(data) {
 
         var svg = d3.select(el).append('svg')
+          .attr('class', 'ipo-vis')
           .attr("width", chartWidth)
           .attr("height", chartHeight)
 
