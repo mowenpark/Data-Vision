@@ -49,9 +49,7 @@ rect.bordered {
 svg.ipo-vis {
   position:relative;
   margin-top:25px;
-  margin-bottom:50px;
-  width:1000px;
-  height:540px;
+  margin-bottom:40px;
   background-color:#fff;
   overflow: visible !important;
 }
