@@ -1,17 +1,17 @@
 angular.module('visOne')
 
-.factory('rideshare', [
+.factory('sankey', [
   '$http',
 
   function($http){
 
     var o = {
-      rideshare: []
+      rideshares: []
     };
 
     o.getAll = function() {
-      return $http.get('/api/rideshare').success(function(data){
-        angular.copy(data, o.rideshare);
+      return $http.get('/api/rideshares').success(function(data){
+        angular.copy(data, o.rideshares);
       });
     };
 

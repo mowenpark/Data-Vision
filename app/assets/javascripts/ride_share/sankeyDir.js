@@ -1,5 +1,5 @@
 angular.module('visOne')
-  .directive('heatmapChart', function () {
+  .directive('sankeyChart', function () {
 
     function link(scope, el) {
 

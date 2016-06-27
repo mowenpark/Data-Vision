@@ -238,7 +238,7 @@ angular.module('visOne')
             .attr('class', 'text-wrap')
             .attr('transform', 'translate(' + (lineWidth + visPadding.middle - visPadding.left) + ',' + (scatterHeight + visPadding.top) + ')');
 
-        var labels = ['Year', 'Tech', 'Tech % Profitable', 'Other', 'Other % Profitable'];
+        var labels = ['Year', 'Tech Companies', 'Tech % Profitable', 'Other Companies', 'Other % Profitable'];
         var keys = ['date', 'biotech_ipos', 'biotech_percent', 'other_ipos', 'other_percent'];
         var o = labels.map(function(d,i) {
             return { label: d, key: keys[i] };
@@ -321,9 +321,14 @@ angular.module('visOne')
 
         function showText(o) {
             line.selectAll('text').text(function(d) {
-                var num = o[d];
+              var num = o[d];
+              if (d.indexOf('percent') == -1) {
                 if(num === null) { return 'N/A'; }
                 else { return num; }
+              } else {
+                if(num === null) { return 'N/A'; }
+                else { return num + '%'; }
+              }
             });
 
             text.text(function(d) {

@@ -83,8 +83,8 @@ angular.module('visOne', ['ui.router', 'templates', 'Devise'])
       templateUrl: 'ride_share/_sankey.html',
       controller: 'SankeyController',
       resolve: {
-        rideshare: ['$stateParams', 'rideshare', function($stateParams, rideshare) {
-          return rideshare.getAll();
+        sankey: ['$stateParams', 'sankey', function($stateParams, sankey) {
+          return sankey.getAll();
         }]
       }
     })
