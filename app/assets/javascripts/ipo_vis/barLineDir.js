@@ -27,6 +27,11 @@ angular.module('visOne')
           middle: 50
       }
 
+      var keyReplace = {
+        biotech_percent: 'Tech & Biotech % Profitable',
+        other_percent: 'Other IPOs % Profitable'
+      };
+
       var timeX = d3.scale.linear();
 
       var dateStart = data[0].year;
@@ -34,10 +39,11 @@ angular.module('visOne')
 
       timeX.domain([dateStart,dateEnd]);
       timeX.range([0,lineWidth-visPadding.middle]);
+      timeX.nice();
 
       var chartColors = d3.scale.ordinal();
       chartColors
-          .domain(['corr', 'disp', 'hfu', 'hfri', 'fof', 'date'])
+          .domain(['biotech_ipos', 'other_ipos', 'hfu', 'hfri', 'fof', 'date'])
           .range(['#FC9E27', '#3A7FA3', '#B5CF6B', '#D6616B', '#E7BA52', '#888']);
 
       var interactiveX = d3.scale.ordinal();
@@ -56,35 +62,25 @@ angular.module('visOne')
       lineY.domain([minDC < 0 ? minDC : 0, maxDC]);
       lineY.range([lineHeight,0]);
 
-      var maxFOF = d3.max(data, function(d) { return d.fof; });
-      var maxHFRI = d3.max(data, function(d) { return d.hfri; });
-      var maxHFU = d3.max(data, function(d) { return d.hfu; });
+      var maxHFRI = d3.max(data, function(d) { return d.biotech_percent; });
+      var maxHFU = d3.max(data, function(d) { return d.other_percent; });
 
+      var minHFRI = d3.min(data, function(d) { return d.biotech_percent; });
+      var minHFU = d3.min(data, function(d) { return d.other_percent; });
 
-      var minFOF = d3.min(data, function(d) { return d.fof; });
-      var minHFRI = d3.min(data, function(d) { return d.hfri; });
-      var minHFU = d3.min(data, function(d) { return d.hfu; });
-
-
-      var fofBound = Math.max(Math.abs(minFOF), Math.abs(maxFOF));
       var hfriBound = Math.max(Math.abs(minHFRI), Math.abs(maxHFRI));
       var hfuBound = Math.max(Math.abs(minHFU), Math.abs(maxHFU));
 
-      var fofY = d3.scale.linear();
-      fofY.domain([-fofBound, 0, fofBound])
-      fofY.range([lineHeight/2, lineHeight/2, 0]);
+      var biotech_percentY = d3.scale.linear();
+      biotech_percentY.domain([-hfriBound, 0, hfriBound])
+      biotech_percentY.range([lineHeight/2, lineHeight/2, 0]);
 
-      var hfriY = d3.scale.linear();
-      hfriY.domain([-hfriBound, 0, hfriBound])
-      hfriY.range([lineHeight/2, lineHeight/2, 0]);
-
-      var hfuY = d3.scale.linear();
-      hfuY.domain([-hfuBound, 0, hfuBound])
-      hfuY.range([lineHeight/2, lineHeight/2, 0]);
+      var other_percentY = d3.scale.linear();
+      other_percentY.domain([-hfuBound, 0, hfuBound])
+      other_percentY.range([lineHeight/2, lineHeight/2, 0]);
 
       var charts = d3.scale.ordinal();
-      charts
-        .domain(['corr','disp','corrDisp', 'hfri', 'hfu', 'fof'])
+      charts.domain(['biotech_ipos','other_ipos','corrDisp', 'biotech_percent', 'other_percent', 'fof'])
         .range([3*(lineHeight + chartPadding), 3*(lineHeight + chartPadding) + 13, 3*(lineHeight + chartPadding), 2*(lineHeight + chartPadding), (lineHeight + chartPadding), 0]);
 
       function getColor(d) {
@@ -96,12 +92,66 @@ angular.module('visOne')
 
           var xAxis = d3.svg.axis()
               .scale(timeX)
+              .outerTickSize([2])
               .orient('bottom');
 
           d3.select('g.container').append('g')
             .attr('class', 'x-axis')
             .attr('transform', 'translate(0,' + (charts('corrDisp') + lineY(0)) + ')')
-            .call(xAxis);
+            .call(xAxis
+              .tickFormat(d3.format("04d")));
+      }
+
+      function buildAlpha(data) {
+        var alphaWrap = d3.select('g.container').selectAll('g.alpha-warp').data([data]);
+        alphaWrap.enter().append('g')
+            .attr('class', 'alpha-wrap');
+
+        var keys = ['biotech_percent','other_percent'];
+        var barsWrap = alphaWrap.selectAll('g.bars-wrap').data(function(d) {
+            var a = keys.map(function(k) {
+                return {
+                    data: d,
+                    key: k
+                };
+            })
+            return a;
+        });
+
+        barsWrap.enter().append('g')
+            .attr('class', 'bars-wrap')
+            .attr('transform', function(d) {
+                return 'translate(0,' + charts(d.key) + ')';
+            });
+
+        barsWrap.append('text')
+            .text(function(d) { return keyReplace[d.key]; })
+            .attr('transform', 'translate(-11,' + lineHeight/2 + ')')
+            .attr('text-anchor', 'end')
+            .attr('dy', '.3em');
+
+        var bars = barsWrap.selectAll('rect').data(function(d) {
+            return d.data
+        });
+
+        bars.enter().append('rect')
+            .attr('fill', function(d,i,j) { return getColor(keys[j]) })
+            .attr('x', function(d) { return timeX(d.year); })
+            .attr('y', function(d,i,j) {
+              return keys[j] == 'biotech_ipos' ? biotech_percentY(d[keys[j]]) : other_percentY(d[keys[j]])
+            })
+            .attr('height', function(d,i,j) {
+                var num = d[keys[j]];
+                var funct = keys[j] == 'biotech_ipos' ? biotech_percentY : other_percentY
+                var yPos = funct(num);
+
+                if(num > 0) return lineHeight/2 - yPos;
+                else if(num == 0) return 0;
+                else if(num < 0) {
+                    return lineHeight/2 - funct(Math.abs(num));
+                }
+            })
+            .attr('width', 5);
       }
 
       function buildDisCorr(data) {
@@ -118,8 +168,9 @@ angular.module('visOne')
 
         dcText.append('tspan')
             .text('Biotech vs.');
+
         dcText.append('tspan')
-            .text('Other Ipos')
+            .text('Other IPOs')
             .attr('x', '0')
             .attr('y', '1.4em');
 
@@ -169,7 +220,7 @@ angular.module('visOne')
 
         var skeleton = buildSkeleton(data);
         var disCorrLines = buildDisCorr(data);
-        // var alphaBars = buildAlpha(data);
+        var alphaBars = buildAlpha(data);
         // var scatter = buildScatter(data);
         // var text = buildTextBox(data);
         // var interactiveLayer = buildInteractiveLayer(data);
