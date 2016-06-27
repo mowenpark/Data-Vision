@@ -28,8 +28,8 @@ angular.module('visOne')
       }
 
       var keyReplace = {
-        biotech_percent: 'Tech & Biotech % Profitable',
-        other_percent: 'Other IPOs % Profitable'
+        biotech_percent: 'Tech & Biotech',
+        other_percent: 'Other IPOs'
       };
 
       var timeX = d3.scale.linear();
@@ -126,7 +126,13 @@ angular.module('visOne')
 
         barsWrap.append('text')
             .text(function(d) { return keyReplace[d.key]; })
-            .attr('transform', 'translate(-11,' + lineHeight/2 + ')')
+            .attr('transform', 'translate(-11,' + lineHeight/4 + ')')
+            .attr('text-anchor', 'end')
+            .attr('dy', '.3em');
+
+        barsWrap.append('text')
+            .text(function(d) { return "% Profitable"; })
+            .attr('transform', 'translate(-11,' + lineHeight/3 + ')')
             .attr('text-anchor', 'end')
             .attr('dy', '.3em');
 
@@ -138,11 +144,11 @@ angular.module('visOne')
             .attr('fill', function(d,i,j) { return getColor(keys[j]) })
             .attr('x', function(d) { return timeX(d.year); })
             .attr('y', function(d,i,j) {
-              return keys[j] == 'biotech_ipos' ? biotech_percentY(d[keys[j]]) : other_percentY(d[keys[j]])
+              return keys[j] == 'biotech_percent' ? biotech_percentY(d[keys[j]]) : other_percentY(d[keys[j]])
             })
             .attr('height', function(d,i,j) {
                 var num = d[keys[j]];
-                var funct = keys[j] == 'biotech_ipos' ? biotech_percentY : other_percentY
+                var funct = keys[j] == 'biotech_percent' ? biotech_percentY : other_percentY
                 var yPos = funct(num);
 
                 if(num > 0) return lineHeight/2 - yPos;
@@ -152,6 +158,24 @@ angular.module('visOne')
                 }
             })
             .attr('width', 5);
+
+        barsWrap.append('g')
+          .attr('class', 'z-line');
+
+        var zLine = barsWrap.select('.z-line')
+            // .attr('transform', 'translate(0,' + axes[d.key + 'Y'](0) + ')');
+
+        zLine.append('line')
+            .attr('x1', 0)
+            .attr('x2', lineWidth - visPadding.middle)
+            .attr('y1', function(d) {
+              var funct = d.key == 'biotech_percent' ? biotech_percentY : other_percentY
+              return funct(0)
+            })
+            .attr('y2', function(d) {
+              var funct = d.key == 'biotech_percent' ? biotech_percentY : other_percentY
+              return funct(0)
+            });
       }
 
       function buildDisCorr(data) {

@@ -53,6 +53,7 @@ svg.ipo-vis {
   width:1000px;
   height:540px;
   background-color:#fff;
+  overflow: visible !important;
 }
 
 svg text {
@@ -84,4 +85,8 @@ svg text {
 
 .text-wrap text {
   font-size:16px;
+}
+
+barline-chart {
+  margin-left: 20px
 }
