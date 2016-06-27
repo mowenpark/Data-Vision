@@ -78,5 +78,16 @@ angular.module('visOne', ['ui.router', 'templates', 'Devise'])
       }
     })
 
+    .state('ride_share', {
+      url: '/ride_share',
+      templateUrl: 'ride_share/_sankey.html',
+      controller: 'SankeyController',
+      resolve: {
+        rideshare: ['$stateParams', 'rideshare', function($stateParams, rideshare) {
+          return rideshare.getAll();
+        }]
+      }
+    })
+
   $urlRouterProvider.otherwise('home');
 }]);
