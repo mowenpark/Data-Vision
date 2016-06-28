@@ -8,12 +8,10 @@ angular.module('visOne')
       var ele = el[0];
 
       var colors = {
-            'environment':         '#edbd00',
-            'social':              '#367d85',
-            'animals':             '#97ba4c',
-            'health':              '#f5662b',
-            'research_ingredient': '#3f3e47',
-            'fallback':            '#9f9fa3'
+            'united_states':         '#edbd00',
+            'india':              '#367d85',
+            'asia':             '#97ba4c',
+            'uber':              '#f5662b'
           };
 
       var svg = d3.select(ele).append("svg")
