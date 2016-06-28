@@ -22,7 +22,7 @@ angular.module('visOne')
 
       chart.name(label)
         .colorNodes(function(name, node) {
-          return color(node, 1) || colors.fallback;
+          return color(node, 1) || '#4d4d4f';
         })
         .colorLinks(function(link) {
           return color(link.source, 4) || color(link.target, 1) || colors.fallback;
