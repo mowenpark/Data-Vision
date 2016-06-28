@@ -18,37 +18,58 @@ comments = donuts.comments.create([{user_id: guest.id, body: 'Cool post!', upvot
     {user_id: guest.id, body: 'Great idea but everything is wrong!', upvotes: 1}])
 
 police_csv = 'app/assets/SFPD_Incidents.csv'
-
 ipo_csv = 'app/assets/ipos_data.csv'
+nodes_csv = 'app/assets/nodes.csv'
+links_csv = 'app/assets/links.csv'
 
-CSV.foreach(police_csv, headers: true) do |row|
-  category = row["Category"]
-  description = row["Descript"]
-  day_val = row["DayOfWeek"]
-  date_val = row["Date"]
-  time_val = row["Time"]
-  date_time = Time.strptime("#{date_val} #{time_val}", '%m/%d/%Y %H:%M')
-  location = row["Location"]
-  new_incident = Incident.create({
-    category: category,
-    description: description,
-    day_val: day_val,
-    date_time: date_time,
-    location: location
-  })
+# CSV.foreach(police_csv, headers: true) do |row|
+#   category = row["Category"]
+#   description = row["Descript"]
+#   day_val = row["DayOfWeek"]
+#   date_val = row["Date"]
+#   time_val = row["Time"]
+#   date_time = Time.strptime("#{date_val} #{time_val}", '%m/%d/%Y %H:%M')
+#   location = row["Location"]
+#   new_incident = Incident.create({
+#     category: category,
+#     description: description,
+#     day_val: day_val,
+#     date_time: date_time,
+#     location: location
+#   })
+# end
+#
+# CSV.foreach(ipo_csv, headers: true) do |row|
+#   year = row["year"]
+#   biotech_ipos = row["biotech_ipos"]
+#   biotech_percent = row["biotech_percent"]
+#   other_ipos = row["other_ipos"]
+#   other_percent = row["other_percent"]
+#   new_ipo = Ipo.create({
+#     year: year,
+#     biotech_ipos: biotech_ipos,
+#     biotech_percent: biotech_percent,
+#     other_ipos: other_ipos,
+#     other_percent: other_percent
+#   })
+# end
+
+CSV.foreach(nodes_csv, headers: true) do |row|
+  name = row["name"]
+  alt_id = row["id"]
+  new_node = Node.create({
+    name: name,
+    alt_id: alt_id
+    })
 end
 
-CSV.foreach(ipo_csv, headers: true) do |row|
-  year = row["year"]
-  biotech_ipos = row["biotech_ipos"]
-  biotech_percent = row["biotech_percent"]
-  other_ipos = row["other_ipos"]
-  other_percent = row["other_percent"]
-  new_ipo = Ipo.create({
-    year: year,
-    biotech_ipos: biotech_ipos,
-    biotech_percent: biotech_percent,
-    other_ipos: other_ipos,
-    other_percent: other_percent
-  })
+CSV.foreach(links_csv, headers: true) do |row|
+  source = row["source"]
+  target = row["target"]
+  value = row['value']
+  new_link = Link.create({
+    source: source,
+    target: target,
+    value: value
+    })
 end

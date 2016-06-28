@@ -82,11 +82,11 @@ angular.module('visOne', ['ui.router', 'templates', 'Devise'])
       url: '/ride_share',
       templateUrl: 'ride_share/_sankey.html',
       controller: 'SankeyController',
-      resolve: {
-        sankey: ['$stateParams', 'sankey', function($stateParams, sankey) {
-          return sankey.getAll();
-        }]
-      }
+      // resolve: {
+      //   sankey: ['$stateParams', 'sankey', function($stateParams, sankey) {
+      //     return sankey.getAll();
+      //   }]
+      // }
     })
 
   $urlRouterProvider.otherwise('home');

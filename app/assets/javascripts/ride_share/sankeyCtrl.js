@@ -5,7 +5,6 @@ angular.module('visOne')
   '$window',
   'sankey',
   function($scope, $window, sankey) {
-    debugger
 
     $scope.data = sankey.rideshares
 
