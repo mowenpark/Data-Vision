@@ -13,7 +13,7 @@ guest = User.create({email: "michael@email.com", username: "Michael", password: 
 donuts = Post.create({title: "donuts!", link: "#/donut", user_id: guest.id, upvotes: 3})
 heat = Post.create({title: "SFPD heatmap", link: "#/heatmap", user_id: guest.id, upvotes: 7})
 ipos = Post.create({title: "Tech IPOs", link: "#/ipo_vis", user_id: guest.id, upvotes: 13})
-ipos = Post.create({title: "Rideshares", link: "#/ride_share", user_id: guest.id, upvotes: 11})
+ride_shares = Post.create({title: "Rideshares", link: "#/ride_share", user_id: guest.id, upvotes: 11})
 
 comments = donuts.comments.create([{user_id: guest.id, body: 'Cool post!', upvotes: 3},
     {user_id: guest.id, body: 'Great idea but everything is wrong!', upvotes: 1}])
