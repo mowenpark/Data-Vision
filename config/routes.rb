@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: {format: :json} do
 
-    resources :rideshares, only: [:index, :show]
+    resources :ride_shares, only: [:index, :show]
 
     resources :ipos, only: [:index, :show]
 

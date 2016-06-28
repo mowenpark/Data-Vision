@@ -6,6 +6,6 @@ angular.module('visOne')
   'sankey',
   function($scope, $window, sankey) {
 
-    $scope.data = sankey.rideshares
+    $scope.data = sankey.rideshares;
 
   }])

@@ -10,7 +10,7 @@ angular.module('visOne')
     };
 
     o.getAll = function() {
-      return $http.get('/api/rideshares').success(function(data){
+      return $http.get('/api/ride_shares').success(function(data){
         angular.copy(data, o.rideshares);
       });
     };
