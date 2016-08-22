@@ -55,15 +55,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block;
 }
 
-/*************************************************/
-/* Colors & Typography
-/*************************************************/
-/*************************************************/
-/* Mixins
-/*************************************************/
-/*************************************************/
-/* Huge Styles
-/*************************************************/
 body {
   background: white;
   color: black;
@@ -112,9 +103,9 @@ a {
   cursor: pointer;
 }
 
-/*************************************************/
-/* Nav Styles
-/*************************************************/
+
+/*Nav Styles*/
+
 header {
   position: relative;
   z-index: 100;
@@ -129,6 +120,7 @@ header {
 }
 
 /*Mobile Nav Styling*/
+
 .navWrapper p {
   display: none;
 }
@@ -373,9 +365,8 @@ button:focus {
   outline: 0;
 }
 
-/*************************************************/
-/* Main Styles
-/*************************************************/
+/* Main Styles */
+
 section.mainSection {
   margin-top: -60px;
   /* offset body content by header height */
@@ -460,10 +451,14 @@ section.mainSection .mainHeader h1 {
     line-height: 15vmin;
   }
 }
+
+/* Main Content Styles */
+
 section.mainSection .mainContent {
   padding: 0 24px;
   margin: 50px 0;
 }
+
 section.mainSection .mainContent p {
   display: block;
   margin-bottom: 50px;
@@ -487,6 +482,8 @@ section.mainSection .mainContent p:last-of-type {
     line-height: 36px;
   }
 }
+
+/*Overlay Styles*/
 
 #overlay {
   display: none;
