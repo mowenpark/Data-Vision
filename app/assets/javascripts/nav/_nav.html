@@ -9,14 +9,12 @@
 				<a href="#/" onclick="closeMenus(event, true)"></a>
 			</div>
 	 		<nav id='mainNav'>
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav navbar-right">
-            <li class="subMenu" ng-hide="signedIn()"><a href="#/login">Log In</a></li>
-            <li class="subMenu" ng-hide="signedIn()"><a href="#/register">Register</a></li>
-            <li class="subMenu" ng-show="signedIn()"><a href="#/">{{ user.username }}</a></li>
-            <li class="subMenu" ng-show="signedIn()"><a href="#/" ng-click="logout()">Log Out</a></li>
-          </ul>
-        </div>
+        <ul>
+          <li ng-hide="signedIn()"><a href="#/login">Log In</a></li>
+          <li ng-hide="signedIn()"><a href="#/register">Register</a></li>
+          <li ng-show="signedIn()"><a href="#/">{{ user.username }}</a></li>
+          <li ng-show="signedIn()"><a href="#/" ng-click="logout()">Log Out</a></li>
+        </ul>
       </nav>
 		</div>
 </header>

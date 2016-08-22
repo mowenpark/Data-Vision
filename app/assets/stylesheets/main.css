@@ -164,7 +164,7 @@ nav {
 @media (min-width: 768px) {
   nav {
     background: #ec008c;
-    float: left;
+    float: right;
   }
 }
 nav > ul {
@@ -192,7 +192,7 @@ nav > ul > li {
     position: absolute;
     top: 20px;
     right: 15px;
-    background: url("../images/arrows.png");
+    background: url("arrows.png");
     background-repeat: no-repeat;
     background-size: 20px;
     background-position: 0 0;
@@ -294,7 +294,7 @@ nav > ul > li.active > ul {
   height: 60px;
   padding: 0;
   background-color: #ec008c;
-  background-image: url("../images/HUGE-white.png");
+  background-image: url("HUGE-white.png");
   background-repeat: no-repeat;
   background-size: 50px;
   background-position: 24px 20px;
@@ -315,7 +315,7 @@ nav > ul > li.active > ul {
   }
   #siteID:hover {
     background-color: white;
-    background-image: url("../images/HUGE-magenta.png");
+    background-image: url("HUGE-magenta.png");
     background-position: 24px 20px;
   }
 }
@@ -387,7 +387,7 @@ section.mainSection {
 }
 section.mainSection .hero {
   background: #ec008c;
-  background-image: url("../images/background-image.jpg");
+  background-image: url("background-image.jpg");
   background-size: cover;
   background-repeat: no-repeat;
 }
