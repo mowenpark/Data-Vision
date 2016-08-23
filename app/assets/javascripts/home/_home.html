@@ -39,63 +39,96 @@
         <div class="double-box">
           <div class="video-container hovereffect">
           <video autoplay loop>
-            <source src="assets/coffee.mp4" type="video/mp4">
+            <source src="assets/heatmap.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
 					<div class="overlay">
-                <h2><a href="http://www.codecamp.ninja/">Codecamp</a></h2>
+                <h2><a href="#/heatmap">Heatmap</a></h2>
           			<p>
-          				<a href="https://github.com/mowenpark/codecamp">Show Code</a>
+          				<a href="#/heatmap">Show Code</a>
           			</p>
             </div>
           </div>
         </div>
 
-        <div class="single-box hovereffect">
-          <img src="https://www.thenegev.com/images/home/vert-2.png" alt="" />
-					<div class="overlay">
-                <h2><a href="http://www.codecamp.ninja/">Codecamp</a></h2>
-          			<p>
-          				<a href="https://github.com/mowenpark/codecamp">Show Code</a>
-          			</p>
-            </div>
+        <div class="single-box">
+					<div class="video-container hovereffect">
+	          <video autoplay loop>
+	            <source src="assets/donuts.mp4" type="video/mp4">
+	            Your browser does not support the video tag.
+	          </video>
+						<div class="overlay">
+	              <h2><a href="#/donut">Donuts</a></h2>
+	        			<p>
+	        				<a href="#/donut">Show Code</a>
+	        			</p>
+	          </div>
+					</div>
         </div>
 
       </div>
 
       <div class="row">
         <div class="single-box hovereffect">
-          <img src="https://www.thenegev.com/images/home/image-1.png" alt="" />
+          <img src="assets/rideshare.png" alt="" />
 					<div class="overlay">
-                <h2><a href="http://www.codecamp.ninja/">Codecamp</a></h2>
+                <h2><a href="#/ride_share">Rideshares</a></h2>
           			<p>
-          				<a href="https://github.com/mowenpark/codecamp">Show Code</a>
+          				<a href="#/ride_share">Show Code</a>
           			</p>
             </div>
         </div>
 
         <div class="single-box hovereffect">
-          <img src="https://www.thenegev.com/images/home/10.jpg" alt="" />
+          <img src="assets/ipos.png" alt="" />
 					<div class="overlay">
-                <h2><a href="http://www.codecamp.ninja/">Codecamp</a></h2>
+                <h2><a href="#/ipo_vis">IPO</a></h2>
           			<p>
-          				<a href="https://github.com/mowenpark/codecamp">Show Code</a>
+          				<a href="#/ipo_vis">Show Code</a>
           			</p>
             </div>
         </div>
 
         <div class="single-box hovereffect">
-          <img src="http://solairesf.com/wp-content/uploads/2015/12/gameroom.jpg" alt="" />
+          <img src="assets/explore.png" alt="" />
 					<div class="overlay">
-                <h2><a href="http://www.codecamp.ninja/">Codecamp</a></h2>
+                <h2><a href="https://github.com/d3/d3/wiki/gallery">Explore d3.js</a></h2>
           			<p>
-          				<a href="https://github.com/mowenpark/codecamp">Show Code</a>
+          				<a href="https://github.com/d3/d3/wiki/gallery">Show Code</a>
           			</p>
             </div>
         </div>
 
       </div>
     </div>
+		<div class="subContent group">
+        <div class="form-header">
+            <h2>GET STARTED</h2>
+            <p>Please fill out the form below and we'll get back to you as soon as possible.</p>
+        </div>
+        <form>
+            <div class="form-input">
+                <input type="text" placeholder="First Name">
+            </div>
+            <div class="form-input">
+                <input type="text" placeholder="Last Name">
+            </div>
+            <div class="form-input">
+                <input type="text" placeholder="Email">
+            </div>
+            <div class="form-input end-item">
+                <input type="text" placeholder="Phone">
+            </div>
+          <div class="">
+              <label></label>
+              <textarea class="form-control" placeholder="Tell us a little about yourself.."></textarea>
+          </div>
+          <div class="">
+              <label></label>
+              <button type="button" data-toggle="modal" data-target="#alertModal" class="">Send <i class="ion-android-arrow-forward"></i></button>
+          </div>
+        </form>
+      </div>
 	</div>
 
 	<div id="last" class="footer-container">
@@ -120,7 +153,7 @@
               </ul>
           </div>
           <div class="footer-section icons">
-              <h4>Follow us</h4>
+              <h4>Follow me</h4>
               <ul class="footer-list">
                 <li class="icon-item"><a href="" title="Twitter"><i class="icon ion-social-twitter-outline"></i></a>&nbsp;</li>
                 <li class="icon-item"><a href="" title="Facebook"><i class="icon ion-social-facebook-outline"></i></a>&nbsp;</li>
@@ -136,47 +169,3 @@
 </section>
 
 <div id="overlay" onclick="closeMenus(event, true)"></div>
-<!-- <div class="app-view col-md-6 col-md-offset-3">
-
-  <div ng-repeat="post in posts | orderBy:'-upvotes'">
-    <span class="glyphicon glyphicon-thumbs-up"
-      ng-click="incrementUpvotes(post)"></span>
-    {{post.upvotes}}
-    <span style="font-size:20px; margin-left:10px;">
-      <a ng-show="post.link" href="{{post.link}}">
-        {{post.title}}
-      </a>
-      <span ng-hide="post.link">
-        {{post.title}}
-      </span>
-      posted by <a ng-href="#/users/{{post.user.username}}">{{post.user.username}}</a>
-    </span>
-    <span>
-      <a href="#/posts/{{post.id}}">Comments ({{post.comments.length}})</a>
-    </span>
-  </div>
-
-  <form ng-submit="addPost()"
-    style="margin-top:30px;">
-    <h3>Add a new post</h3>
-
-    <div class="form-group">
-      <input type="text"
-        class="form-control"
-        placeholder="Title"
-        ng-model="title"></input>
-    </div>
-    <div class="form-group">
-      <input type="text"
-      class="form-control"
-      placeholder="Link"
-      ng-model="link"></input>
-    </div>
-    <button type="submit" class="btn btn-primary">Post</button>
-  </form>
-
-  <blockquote style="margin-top:30px;">
-    <p><em>The commonality between science and art is in trying to see profoundly - to develop strategies of seeing and showing.</em></p>
-    <footer>Edward Tufte</footer>
-  </blockquote>
-</div> -->
