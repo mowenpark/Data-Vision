@@ -288,7 +288,7 @@ nav > ul > li.active > ul {
   height: 60px;
   padding: 0;
   background-color: #ec008c;
-  background-image: url("http://res.cloudinary.com/dtdgkk9aa/image/upload/c_crop,h_120,w_300/v1471935545/DaVi-white_pxa2dm.png");
+  background-image: url("https://res.cloudinary.com/dtdgkk9aa/image/upload/c_crop,h_120,w_300/v1471935545/DaVi-white_pxa2dm.png");
   background-repeat: no-repeat;
   background-size: 50px;
   background-position: 24px 20px;
@@ -309,7 +309,7 @@ nav > ul > li.active > ul {
   }
   #siteID:hover {
     background-color: white;
-    background-image: url("http://res.cloudinary.com/dtdgkk9aa/image/upload/c_crop,h_120,w_300/v1471935542/DaVi-magenta_zkdwwq.png");
+    background-image: url("https://res.cloudinary.com/dtdgkk9aa/image/upload/c_crop,h_120,w_300/v1471935542/DaVi-magenta_zkdwwq.png");
     background-position: 24px 20px;
   }
 }
