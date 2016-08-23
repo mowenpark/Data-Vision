@@ -18,6 +18,7 @@ time, mark, audio, video {
   font: inherit;
   font-size: 100%;
   vertical-align: baseline;
+  box-sizing: border-box;
 }
 
 html {
@@ -42,6 +43,7 @@ caption, th, td {
 q, blockquote {
   quotes: none;
 }
+
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
@@ -456,33 +458,37 @@ section.mainSection .mainHeader h1 {
 
 section.mainSection .mainContent {
   padding: 0 24px;
+}
+
+section.mainSection .subContent {
   margin: 50px 0;
 }
 
-section.mainSection .mainContent div {
-
-}
-
-.feature {
+section.mainSection .feature {
   display: inline-block;
   float: left;
   font-size: 1rem;
   height: 100%;
   width: 33.33%;
-  overflow: hidden;
 }
 
-.icon-lg {
+section.mainSection .icon-lg {
   font-size: 70px;
   color: #ec008c;
 }
 
-.row {
+section.mainSection .row {
   height: 300px;
   font-size: 0;
   font-weight: bold;
   font-size: 1.5em;
   text-align: left;
+}
+
+section.mainSection img,video {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
 }
 
 .single-box {
@@ -512,6 +518,10 @@ section.mainSection .mainContent div {
   width: 66.66%;
 }
 
+.single-box,.double-box {
+  border: 10px solid white;
+}
+
 section.mainSection .mainContent p {
   display: block;
   margin-bottom: 50px;
@@ -536,6 +546,107 @@ section.mainSection .mainContent p:last-of-type {
   }
 }
 
+.footer-container {
+  position: relative;
+  height: 300px;
+  background: #2b3644;
+}
+
+.footer {
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 1200px;
+  max-width: 100%;
+  height: 100%;
+  z-index: 1;
+  background: url('datanyze-map.png') no-repeat center center;
+  background-size: cover;
+}
+
+.footer-wrapper {
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background: url('datanyze-map.png') no-repeat center center;
+  background-size: cover;
+}
+
+.footer-row {
+  padding-top: 20px;
+  margin: 0 auto;
+  max-width: 80%;
+}
+
+.footer-section {
+  display: inline-block;
+  float: left;
+  font-size: 1rem;
+  height: 100%;
+  width: 33.33%;
+  padding: 10px;
+}
+
+.footer-section h4 {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 50px;
+  color: #fff;
+}
+
+.footer-list {
+  position: relative;
+  background: transparent;
+}
+
+.footer-list li {
+  display: list-item;
+  float: none;
+}
+
+.footer-list li:hover a {
+  background: transparent;
+}
+
+.footer-list a {
+  text-align: left;
+  font-size: 15px;
+  line-height: 25px;
+  height: auto;
+  color: #ffaf00;
+}
+
+.footer-list a:hover {
+  background: transparent;
+  color: #fff;
+}
+
+.icon-item {
+  display: inline-block !important;
+  width: auto;
+  padding: 0 5px;
+}
+
+.icon-item a {
+  display: inline;
+}
+
+.icon {
+  font-size: 50px;
+}
+
+.copy-write {
+  display: block;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  font-size: 8px;
+  padding: 10px;
+  color: #fff;
+}
+
 /*Overlay Styles*/
 
 #overlay {
@@ -547,4 +658,20 @@ section.mainSection .mainContent p:last-of-type {
   width: 100%;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* clearfix */
+.group:before,
+.group:after {
+    content: "";
+    display: table;
+}
+
+.group:after {
+    clear: both;
+}
+
+/* For IE 6/7 */
+.group {
+    zoom: 1;
 }
