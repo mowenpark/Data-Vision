@@ -197,7 +197,7 @@ nav > ul > li > a {
   padding: 14px 24px;
   font-size: 21px;
   line-height: 20px;
-  font-family: HUGEAvantGardeBold, sans-serif;
+  font-family: Monseratt, sans-serif, serif;
   font-weight: 300;
 }
 @media (min-width: 768px) {
@@ -288,7 +288,7 @@ nav > ul > li.active > ul {
   height: 60px;
   padding: 0;
   background-color: #ec008c;
-  background-image: url("HUGE-white.png");
+  background-image: url("http://res.cloudinary.com/dtdgkk9aa/image/upload/c_crop,h_120,w_300/v1471935545/DaVi-white_pxa2dm.png");
   background-repeat: no-repeat;
   background-size: 50px;
   background-position: 24px 20px;
@@ -309,7 +309,7 @@ nav > ul > li.active > ul {
   }
   #siteID:hover {
     background-color: white;
-    background-image: url("HUGE-magenta.png");
+    background-image: url("http://res.cloudinary.com/dtdgkk9aa/image/upload/c_crop,h_120,w_300/v1471935542/DaVi-magenta_zkdwwq.png");
     background-position: 24px 20px;
   }
 }
