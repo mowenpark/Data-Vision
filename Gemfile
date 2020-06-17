@@ -1,5 +1,5 @@
-source "http://rubygems.org"
-source "http://gems.github.com"
+source "https://rubygems.org"
+ruby "2.5.3"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails'
@@ -25,6 +25,8 @@ gem 'bower'
 gem 'rails_12factor', group: :production
 
 gem 'newrelic_rpm'
+
+gem 'tzinfo-data'
 
 # gem 'fastercsv', '~> 1.5', '>= 1.5.5'
 
