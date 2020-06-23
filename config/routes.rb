@@ -1,27 +1,3 @@
 Rails.application.routes.draw do
-
-  devise_for :users
-  root to: 'application#angular'
-
-  namespace :api, defaults: {format: :json} do
-
-    resources :ride_shares, only: [:index, :show]
-
-    resources :ipos, only: [:index, :show]
-
-    resources :incidents, only: [:index, :show]
-
-    resources :posts, only: [:create, :index, :show] do
-      resources :comments, only: [:show, :create] do
-        member do
-          put '/upvote' => 'comments#upvote'
-        end
-      end
-
-      member do
-        put '/upvote' => 'posts#upvote'
-      end
-    end
-  end
-
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
